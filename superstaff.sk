@@ -1,0 +1,132 @@
+# ╔═════════════════════════════════════════════════════════════╗
+#
+#                   ✖ SkyMC/BlazedMC Staff ✖
+#                      ✖ Superstaff.sk ✖
+#
+# ╚═════════════════════════════════════════════════════════════╝
+
+#  Installed Addons:
+#     SkQuery
+#     SkRayFall
+#     ExtrasSK
+#     MundoSk
+#     SharpSk
+#     SkDragon
+#     Skellet
+#     SkMorkaz
+#     TuSKe
+#     Umbaska
+#     WolvSK
+#
+
+options:
+	prefix: §4§lSky§c§lMC §8»
+	permission: skymc.ss
+	permission.message: §cYou are not allowed to use this command
+	>: »
+	lines: §8§m---------------------
+	sprefix: §9§lSS §8»
+	syntax: &c&lSYNTAX &8»
+	
+	BanLine1: §4§lSky§c§lMC §4§lNet§c§lwork
+	BanLine2: §0
+	BanLine3: §7You have been suspended from the server
+	BanLine4: §1
+	BanLine5: §7Staff§8: §7%sender%
+	BanLine6: §7Reason§8: %arg 2%
+	BanLine7: §2
+	BanLine8: §7If this is an Perm ban, you might appeal for an unban.
+	
+	
+	
+on script load:
+	wait 5 seconds
+	send "                     " to console
+	send "                     " to console
+	send "§8[§c§lSS§8] §7Loaded" to console
+	send "                     " to console
+	send "                     " to console
+	
+command /ss [<offline player>]:
+	permission: {@permission}
+	permission message: {@prefix} {@permission.message}
+	trigger:
+		if arg 1 is online:
+			set {_ip} to arg 1's ip
+			set {_ping} to ping of arg 1
+			set {_location} to location of arg 1
+		
+			send "{@lines}"
+			send "§7Username §8» §c%arg 1%"
+			send "§7IP §8» §c%{_ip}%"
+			send "§7Ping §8» §c%{_ping}%"
+			send "§7Location §8» §c%{_location}%"
+			#send "§7Creator Code §8» &c%{creatorcode.%arg 1%}%"
+			json("%player%", "§7SS §8» §c§lBAN PLAYER||ttp:§7Click to ban player||cmd:/ss.ban %arg 1% SS")
+			json("%player%", "§7SS §8» §c§lKICK PLAYER||ttp:§7Click to kick player||cmd:/ss.kick %arg 1% SS")
+			send "{@lines}"
+		
+		if arg 1 is not online:
+			send "§7Username §8» &c%arg 1%"
+			json("%player%", "§7SS §8» §c§lBAN PLAYER||ttp:§7Click to ban player||cmd:/ss.ban %arg 1% SS")
+			json("%player%", "§7SS §8» §c§lUNBAN PLAYER||ttp:§7Click to unban player||cmd:/ss.unban %arg 1% SS")
+			send "{@sprefix} &cPlayer is not online or do not exist !"
+			
+		if arg 1 is not set:
+			send "{@prefix} §7/ss §8<§cplayer§8>"
+		
+command /ss.ban [<player>] [<text>]:
+	permission: {@permission}
+	permission message: {@permission.message}
+	trigger:
+		kick argument 1 due to "§9§lSS §8» §7Account Suspended §8| §7Please appeal "
+		wait 1 tick 
+		ban argument 1 due to "%newline%§r{@lines}%newline%§r%newline%{@BanLine1}%newline%{@BanLine2}%newline%{@BanLine3}%newline%{@BanLine4}%newline%{@BanLine5}%newline%{@BanLine6}%newline%{@BanLine7}%newline%{@BanLine8}%newline% %newline%{@lines}"
+		broadcast "{@sprefix} §c%arg 1% §7has been suspended from the server by §c%sender%"
+		
+command /ss.unban [<player>] [<text>]:
+	permission: {@permission}
+	permission message: {@permission.message}
+	trigger:
+		unban arg 1 
+		broadcast "{@sprefix} §c%arg 1% §7has been unsuspended from the server by §c%sender%"
+		
+command /ss.kick [<player>] [<text>]:
+	permission: {@permission}
+	permission message: {@permission.message}
+	trigger:
+		kick argument 1 due to "§9§lSS §8» §7Account Kicked "
+		broadcast "{@sprefix} §c%arg 1% §7has been kicked from the server by §c%sender%"
+		
+		
+		
+		
+		
+options:
+	prefix: §4§lStaff§c§lChat §8»
+	prefix2: §e§lPING §8»
+	>: »
+
+command /staffchat [<text>]:
+	permission: skymc.staffchat
+	permission message: §7You need §9§lHELPER §7or up to execute this command
+	trigger:
+		if arg 1 is set:
+			loop all players:
+				loop-player has permission "skymc.staffchat" or "op":
+					message "{@prefix} §c§6%colored player's prefix%§6%player% §8{@>} §c%arg%" to loop-player
+					
+		if arg 1 is not set:
+			send "{@prefix} §7/staffchat §8<§cmessage§8>"
+			
+command /sc [<text>]:
+	permission: skymc.staffchat
+	permission message: §7You need §9§lHELPER §7or up to execute this command
+	trigger:
+		if arg 1 is set:
+			loop all players:
+				loop-player has permission "skymc.staffchat" or "op":
+					message "{@prefix} §c§6%colored player's prefix%§6%player% §8{@>} §c%arg%" to loop-player
+					
+		if arg 1 is not set:
+			send "{@prefix} §7/sc §8<§cmessage§8>"
