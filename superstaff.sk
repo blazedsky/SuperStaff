@@ -5,20 +5,6 @@
 #
 # ╚═════════════════════════════════════════════════════════════╝
 
-#  Installed Addons:
-#     SkQuery
-#     SkRayFall
-#     ExtrasSK
-#     MundoSk
-#     SharpSk
-#     SkDragon
-#     Skellet
-#     SkMorkaz
-#     TuSKe
-#     Umbaska
-#     WolvSK
-#
-
 options:
 	prefix: §4§lSky§c§lMC §8»
 	permission: skymc.ss
