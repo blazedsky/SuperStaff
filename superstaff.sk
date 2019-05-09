@@ -6,8 +6,8 @@
 # ╚═════════════════════════════════════════════════════════════╝
 
 options:
-	prefix: §4§lSky§c§lMC §8»
-	permission: skymc.ss
+	prefix: §6§lVape§e§lMC §8»
+	permission: vapemc.ss
 	permission.message: §cYou are not allowed to use this command
 	>: »
 	lines: §8§m---------------------
@@ -27,11 +27,11 @@ options:
 	
 on script load:
 	wait 5 seconds
-	send "                     " to console
-	send "                     " to console
+	send "§c                   " to console
+	send "§c                   " to console
 	send "§8[§c§lSS§8] §7Loaded" to console
-	send "                     " to console
-	send "                     " to console
+	send "§c                   " to console
+	send "§c                   " to console
 	
 command /ss [<offline player>]:
 	permission: {@permission}
